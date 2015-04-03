@@ -2,8 +2,8 @@
 //  ViewController.m
 //  sending data test
 //
-//  Created by Prasanth on 2/9/15.
-//  Copyright (c) 2015 Prasanth. All rights reserved.
+//  Created by Jin on 2/9/15.
+//  Copyright (c) 2015 Jin. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -15,6 +15,9 @@
 @implementation ViewController
 @synthesize servoSlider;
 @synthesize servoLabel;
+@synthesize statusLabel;
+@synthesize escLabel;
+@synthesize escSlider;
 
 NSString *host = @"169.254.1.1";
 UInt16 port = 8080;
@@ -46,7 +49,6 @@ UInt16 port = 8080;
 
 - (IBAction)disconnectButtonPressed:(id)sender {
     [socket disconnect];
-    
 }
 
 - (IBAction)pingButtonPressed:(id)sender {
@@ -54,29 +56,46 @@ UInt16 port = 8080;
 }
 
 - (IBAction)servoSliding:(UISlider *)sender {
-    self.servoLabel.text = [NSString stringWithFormat:@"@%.0f#", self.servoSlider.value];
     
-    if (self.servoSlider.value > 100) {
-        sleep(0.005);
-        [self sendMotorReference];
+    [self sendMotorReference];
+    
+    if (self.servoSlider.value > 100) {self.servoLabel.text = [NSString stringWithFormat:@"%.0f", self.servoSlider.value];
     }
     else if(self.servoSlider.value < 10) {
-        sleep(0.005);
-        self.servoLabel.text = [NSString stringWithFormat:@"@00%.0f#", self.servoSlider.value];
-        [self sendMotorReference];
+        self.servoLabel.text = [NSString stringWithFormat:@"00%.0f", self.servoSlider.value];
+    
     }
     else
-        self.servoLabel.text = [NSString stringWithFormat:@"@0%.0f#", self.servoSlider.value];
-    sleep(0.005);
-    [self sendMotorReference];
+        self.servoLabel.text = [NSString stringWithFormat:@"0%.0f", self.servoSlider.value];
 }
 
+- (IBAction)escSliding:(UISlider *)sender {
+    [self sendMotorReference];
+    
+    if (self.escSlider.value > 100) {self.escLabel.text = [NSString stringWithFormat:@"%.0f", self.escSlider.value];
+    }
+    else if (self.escSlider.value < 10) {
+        self.escLabel.text = [NSString stringWithFormat:@"00%.0f", self.escSlider.value];
+    }
+    else
+        self.escLabel.text = [NSString stringWithFormat:@"0%.0f", self.escSlider.value];
+    
+}
+
+
 -(void)sendMotorReference {
-    refString = self.servoLabel.text;
-    NSLog(@"%@", refString);
+    
+self.statusLabel.text = [NSString stringWithFormat:@"@%@%@#", self.servoLabel.text, self.escLabel.text];
+    
+// refString = self.servoLabel.text;
+//    NSLog(@"@%@#", refString);
+    
+//refString1 = self.escLabel.text;
+  //  NSLog(@"*%@#", refString1);
     
     refData = [refString dataUsingEncoding: NSUTF8StringEncoding];
     [socket writeData:refData withTimeout:-1 tag:1];
+    sleep(0.05);
     
 }
 

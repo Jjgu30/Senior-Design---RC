@@ -35,8 +35,8 @@
                                     <action selector="disconnectButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="nQf-Al-s6g"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uzr-X4-U7O">
-                                <rect key="frame" x="138" y="175" width="100" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uzr-X4-U7O">
+                                <rect key="frame" x="78" y="156" width="218" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="e0b-WI-hyj"/>
                                 </constraints>
@@ -53,14 +53,26 @@
                                     <action selector="pingButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hpx-qI-Cl6"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="cVI-WP-UsV">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="90" minValue="0.0" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="cVI-WP-UsV">
                                 <rect key="frame" x="27" y="319" width="322" height="31"/>
                                 <connections>
                                     <action selector="servoSliding:" destination="vXZ-lx-hvc" eventType="valueChanged" id="jmP-7P-Qik"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Servo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrK-jO-qwX">
-                                <rect key="frame" x="113" y="267" width="167" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrK-jO-qwX">
+                                <rect key="frame" x="105" y="267" width="167" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="90" minValue="0.0" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="FlO-5G-yER">
+                                <rect key="frame" x="27" y="481" width="322" height="31"/>
+                                <connections>
+                                    <action selector="escSliding:" destination="vXZ-lx-hvc" eventType="valueChanged" id="CAB-fy-nH5"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Q3-5V-XfW">
+                                <rect key="frame" x="120" y="433" width="136" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -87,6 +99,8 @@
                     <connections>
                         <outlet property="connectButton" destination="iDm-kl-zcb" id="1Bh-Ep-4az"/>
                         <outlet property="disconnectButton" destination="1rS-iC-Ogq" id="OMa-Vy-ocI"/>
+                        <outlet property="escLabel" destination="8Q3-5V-XfW" id="TOy-xj-OOp"/>
+                        <outlet property="escSlider" destination="FlO-5G-yER" id="dQJ-UF-UGa"/>
                         <outlet property="pingButton" destination="azW-Kg-KpJ" id="cYA-Qn-jZH"/>
                         <outlet property="servoLabel" destination="mrK-jO-qwX" id="ws7-fB-9qP"/>
                         <outlet property="servoSlider" destination="cVI-WP-UsV" id="gXY-1c-l1Z"/>
@@ -95,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="194.5" y="459.5"/>
+            <point key="canvasLocation" x="194.5" y="480.5"/>
         </scene>
     </scenes>
 </document>
